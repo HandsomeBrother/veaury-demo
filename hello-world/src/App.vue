@@ -1,19 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <BasicPure/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <BasicPure />
+  <HooksComponentVue />
+
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-import {applyPureReactInVue} from 'veaury'
-import { HooksComponent } from '../../dist/index.js'
+<script >
+import { HooksComponentVue } from '../adapter/dist/index.js'
+import { StatPanelVue } from '../adapter/dist/index.js'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    BasicPure: applyPureReactInVue(HooksComponent)
+    // HelloWorld,
+    BasicPure: StatPanelVue,
+    HooksComponentVue: HooksComponentVue
   }
 }
 </script>
