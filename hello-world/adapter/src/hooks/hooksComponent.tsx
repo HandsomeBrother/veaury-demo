@@ -12,4 +12,4 @@ export function HooksComponent() {
     )
 }
 
-export const HooksComponentlVue = applyPureReactInVue(HooksComponent) 
+export const HooksComponentVue = applyPureReactInVue(HooksComponent) 

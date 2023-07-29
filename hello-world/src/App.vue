@@ -30,4 +30,3 @@ export default {
   margin-top: 60px;
 }
 </style>
-../../src/hooks/hooksComponent
