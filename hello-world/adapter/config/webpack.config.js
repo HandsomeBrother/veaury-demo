@@ -1,4 +1,5 @@
 const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader')
 
 
 module.exports = {
@@ -10,25 +11,35 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js',
         library: {
-            type: 'amd',
+            type: 'umd',
         }
     },
 
     externals: {
         "react": 'react',
         "react-dom": 'react-dom',
+        "vue": 'vue',
     },
 
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
     },
+
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
-                exclude: "/node_modules/"
-            }
+                exclude: "/node_modules/",
+                options: {
+                    configFile: path.resolve(process.cwd(), 'tsconfig.json'),
+                    appendTsSuffixTo: [/\.vue$/]
+                 },
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
             // {
             //     test: /\.(ts|js)x?$/,
             //     // ...
@@ -38,5 +49,7 @@ module.exports = {
     },
 
 
-    plugins: []
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 };
